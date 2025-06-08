@@ -1,0 +1,5 @@
+class Paciente:
+    def __init__(self, nombre: str, dni: str, fecha_nacimiento: str):
+        self.__nombre = nombre
+        self.__dni = dni
+        self.__fecha_nacimiento = fecha_nacimiento
