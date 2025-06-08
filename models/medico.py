@@ -9,4 +9,4 @@ class Medico:
         medico_str = f"Medico: {self.__nombre}\n Matricula: {self.__matricula} \n Especialidades:"
         for especialidad in self.__especialidades:
             medico_str += f"\n - {especialidad.get_nombre()}"
-        return ""
+        return medico_str
