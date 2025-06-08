@@ -6,3 +6,6 @@ class Paciente:
 
     def get_dni(self)-> str:
         return self.__dni
+
+    def __str__(self)-> str:
+        return ""
