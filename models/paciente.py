@@ -3,3 +3,6 @@ class Paciente:
         self.__nombre = nombre
         self.__dni = dni
         self.__fecha_nacimiento = fecha_nacimiento
+
+    def get_dni(self)-> str:
+        return self.__dni
