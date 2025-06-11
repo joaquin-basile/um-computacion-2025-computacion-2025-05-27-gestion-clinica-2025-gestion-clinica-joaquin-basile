@@ -23,6 +23,9 @@ class Medico:
     def get_matricula(self) -> str:
         return self.__matricula
 
+    def get_nombre(self):
+        return self.__nombre
+
     def agregar_especialidad(self, especialidad: Especialidad):
         if especialidad in self.__especialidades:
             raise EspecialidadExistenteException()
