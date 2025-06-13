@@ -2,7 +2,7 @@ from constants.dias import Dia
 
 class Especialidad:
     def __init__(self, tipo: str, dias: list[Dia]):
-        self.__tipo = tipo 
+        self.__tipo = tipo
         self.__dias = dias
 
     def get_especialidad(self):

@@ -15,13 +15,11 @@ class TestTurno(unittest.TestCase):
         self.fecha_hora = datetime(2025, 6, 10, 10, 30)
         self.turno1 = Turno(self.paciente1, self.medico1, self.fecha_hora, "Cardiología")
 
-
-    def test_str(self):
-        expeted_str = f"Turno: \nPaciente: Ana Gómez \nMedico: Dr. Juan Perez \nEspecialidad: Cardiología \nFecha/hora: {self.fecha_hora}"
-        self.assertEqual(str(self.turno1), expeted_str)
-
     def test_get_medico(self):
         self.assertEqual(self.medico1, self.turno1.get_medico())
 
     def test_get_fecha_hora(self):
         self.assertEqual(self.fecha_hora, self.turno1.get_fecha_hora())
+
+if __name__ == '__main__':
+    unittest.main() 

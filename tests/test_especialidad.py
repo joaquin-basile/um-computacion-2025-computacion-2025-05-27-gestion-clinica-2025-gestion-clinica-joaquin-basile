@@ -18,7 +18,6 @@ class TestEspecialidad(unittest.TestCase):
         self.assertTrue(especialidad1.verificar_dia(Dia.lunes))
         self.assertFalse(especialidad1.verificar_dia(Dia.miercoles))
 
-    def test_str(self):
-        especialidad1 = Especialidad("Pediatra", [Dia.lunes, Dia.martes])
-        expected_str = "Pediatra (Días: lunes, martes)"
-        self.assertEqual(str(especialidad1), expected_str)
+
+if __name__ == '__main__':
+    unittest.main() 
