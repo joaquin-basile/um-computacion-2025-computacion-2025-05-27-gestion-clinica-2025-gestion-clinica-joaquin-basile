@@ -6,5 +6,5 @@ class Dia(Enum):
     miercoles = "miércoles"
     jueves = "jueves"
     viernes = "viernes"
-    sabasto = "sábado"
+    sabado = "sábado"
     domingo = "domingo"
