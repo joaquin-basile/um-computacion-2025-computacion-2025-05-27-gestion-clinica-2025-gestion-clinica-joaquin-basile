@@ -13,6 +13,8 @@ class EspecialidadExistenteException(Exception):
 
 class Medico:
     def __init__(self, nombre: str, matricula: str, especialidades: list[Especialidad]):
+        if nombre == "" or matricula == "":
+            raise ValueError("El nombre y la matrícula del médico no pueden estar vacíos.")
         self.__nombre = nombre
         self.__matricula = matricula
         self.__especialidades = especialidades
@@ -33,7 +35,7 @@ class Medico:
         for especialidad_existente in self.__especialidades:
             for dia in especialidad.get_dias():
                 if dia in especialidad_existente.get_dias():
-                   raise DiaOcupadoException() 
+                   raise DiaOcupadoException()
         self.__especialidades.append(especialidad)
 
     def get_especialidad_para_dia(self, dia: Dia)-> str | None:
@@ -42,9 +44,6 @@ class Medico:
                 return especialidad.get_especialidad()
         return
 
-
     def __str__(self):
-        medico_str = f"Medico: {self.__nombre}\n Matricula: {self.__matricula} \n Especialidades:"
-        for especialidad in self.__especialidades:
-            medico_str += f"\n - {especialidad.get_especialidad()}"
-        return medico_str
+        especialidades_str = ",\n".join(str(esp) for esp in self.__especialidades)
+        return f"Medico(\n{self.__nombre}, \n{self.__matricula}, \n[{especialidades_str}])"

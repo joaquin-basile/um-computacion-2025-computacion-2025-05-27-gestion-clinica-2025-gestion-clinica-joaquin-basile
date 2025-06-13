@@ -20,5 +20,5 @@ class TestEspecialidad(unittest.TestCase):
 
     def test_str(self):
         especialidad1 = Especialidad("Pediatra", [Dia.lunes, Dia.martes])
-        expected_str = "Pediatra (Días: lunes, martes)"
+        expected_str = "Pediatra([\nlunes,\nmartes\n])"
         self.assertEqual(str(especialidad1), expected_str)
