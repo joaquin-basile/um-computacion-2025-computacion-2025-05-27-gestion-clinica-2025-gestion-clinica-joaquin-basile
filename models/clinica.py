@@ -97,9 +97,13 @@ class Clinica:
 
     def validar_especialidad_en_dia(self, medico: Medico, especialidad_solicitada: str, dia_semana: Dia):
         especialidad = medico.get_especialidad_para_dia(dia_semana)
+        if especialidad is None:
+            raise MedicoNoDisponibleException(
+                    f"El médico no tiene especialidades asignadas para los {dia_semana.value}"
+            )
         if especialidad != especialidad_solicitada:
             raise MedicoNoDisponibleException(
-                f"El médico no atiende {especialidad} los {dia_semana}s"
+                f"El médico no atiende {especialidad_solicitada} atiende {especialidad}"
             )
 
     #Utilidades
