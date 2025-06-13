@@ -15,7 +15,7 @@ class TestHistoriaClinica(unittest.TestCase):
             "Dr. Smith",
             "98765432",
             [
-                Especialidad("Pediatria"), [Dia.lunes]
+                Especialidad("Pediatria", [Dia.lunes])
             ]
         )
         self.turno1 = Turno(self.paciente, self.medico, datetime(2025,6,14,10,40), "Pediatria")
@@ -39,3 +39,5 @@ class TestHistoriaClinica(unittest.TestCase):
         self.assertEqual(self.historia_clinica.get_recetas(), [self.receta1, self.receta2])
 
 
+if __name__ == '__main__':
+    unittest.main() 

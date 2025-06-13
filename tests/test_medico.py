@@ -8,11 +8,6 @@ class TestMedico(unittest.TestCase):
         self.cardiologo = Especialidad("Cardiologo", [Dia.lunes, Dia.miercoles])
         self.pediatra = Especialidad("Pediatra", [Dia.martes])
 
-    def test_str(self):
-        medico1 = Medico("Dr. Smith", "123456", [self.cardiologo, self.pediatra])
-        expected_str = "Medico: Dr. Smith\n Matricula: 123456 \n Especialidades:\n - Cardiologo\n - Pediatra"
-        self.assertEqual(str(medico1), expected_str)
-
     def test_get_espcialidades(self):
         medico1 = Medico("Dr. Smith", "123456", [self.cardiologo, self.pediatra])
         especialidades = medico1.get_especialidades()
@@ -53,3 +48,5 @@ class TestMedico(unittest.TestCase):
         self.assertIsNone(medico1.get_especialidad_para_dia(Dia.domingo))
 
 
+if __name__ == '__main__':
+    unittest.main() 

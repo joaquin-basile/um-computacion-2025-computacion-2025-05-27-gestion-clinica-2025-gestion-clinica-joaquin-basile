@@ -77,3 +77,8 @@ class TestClinica(unittest.TestCase):
         
         with self.assertRaises(TurnoOcupadoException):
             self.clinica1.agendar_turno(self.paciente1.get_dni(), self.medico1.get_matricula(), "Cardiología", turno_un_lunes)
+
+
+
+if __name__ == '__main__':
+    unittest.main() 
