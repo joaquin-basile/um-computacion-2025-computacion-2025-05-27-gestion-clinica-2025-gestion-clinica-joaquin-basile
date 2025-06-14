@@ -121,3 +121,4 @@ class Clinica:
 
     def get_especialidad_disponible(self, medico: Medico, dia_semana: Dia) -> str:
         return medico.get_especialidad_para_dia(dia_semana)
+

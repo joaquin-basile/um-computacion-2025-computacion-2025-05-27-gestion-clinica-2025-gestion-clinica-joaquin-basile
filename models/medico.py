@@ -12,15 +12,16 @@ class EspecialidadExistenteException(Exception):
         super().__init__(mensaje)
 
 class Medico:
-    def __init__(self, nombre: str, matricula: str, especialidades: list[Especialidad] = []):
+    def __init__(self, nombre: str, matricula: str, especialidades: list[Especialidad] = None):
         if nombre == "" or matricula == "":
             raise ValueError("El nombre y la matrícula del médico no pueden estar vacíos.")
         self.__nombre = nombre
         self.__matricula = matricula
-        self.__especialidades = especialidades
+        self.__especialidades = [] if especialidades is None else especialidades
+        
 
     def get_especialidades(self)-> list[Especialidad]:
-        return self.__especialidades
+        return self.__especialidades.copy()
 
     def get_matricula(self) -> str:
         return self.__matricula

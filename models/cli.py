@@ -78,7 +78,7 @@ class CLI:
         try:
             nombre = input("Ingrese el nombre del médico: ")
             matricula = input("Ingrese la matrícula del médico: ")
-            
+
             medico = Medico(nombre, matricula)
             
             # Agregar especialidades
