@@ -1,7 +1,7 @@
 class Paciente:
     def __init__(self, nombre: str, dni: str, fecha_nacimiento: str):
-        if nombre == "" or dni == "":
-            raise ValueError("El nombre y el DNI del paciente no pueden estar vacíos.")
+        if nombre == "" or dni == "" or fecha_nacimiento == "":
+            raise ValueError("El nombre, DNI y fecha de nacimiento del paciente no pueden estar vacíos.")
         self.__nombre = nombre
         self.__dni = dni
 
