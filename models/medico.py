@@ -46,5 +46,13 @@ class Medico:
         return
 
     def __str__(self):
-        especialidades_str = ",\n".join(str(esp) for esp in self.__especialidades)
-        return f"Medico(\n{self.__nombre}, \n{self.__matricula}, \n[{especialidades_str}])"
+        especialidades_str = ",\n    ".join(str(especialidad) for especialidad in self.__especialidades)
+        return (
+            "Medico(\n"
+            f"  Nombre: {self.__nombre},\n"
+            f"  Matrícula: {self.__matricula},\n"
+            f"  Especialidades: [\n"
+            f"    {especialidades_str}\n"
+            "  ]\n"
+            ")"
+    )

@@ -14,5 +14,11 @@ class Paciente:
     def get_nombre(self)-> str:
         return self.__nombre
 
-    def __str__(self)-> str:
-        return f"Paciente({self.__nombre}, {self.__dni}, {self.__fecha_nacimiento})"
+    def __str__(self):
+        return (
+            "Paciente(\n"
+            f"  Nombre: {self.__nombre},\n"
+            f"  DNI: {self.__dni},\n"
+            f"  Fecha de nacimiento: {self.__fecha_nacimiento}\n"
+            ")"
+        )

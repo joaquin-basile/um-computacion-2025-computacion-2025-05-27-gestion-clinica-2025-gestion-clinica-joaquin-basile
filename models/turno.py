@@ -13,6 +13,12 @@ class Turno ():
 
     def get_fecha_hora(self):
         return self.__fecha_hora
-
-    # def __str__(self):
-    #     return f"Turno({str(self.__paciente)}, \n{str(self.__medico)}, \n{str(self.__especialidad)}, \n{self.__fecha_hora}"
+    def __str__(self):
+        return (
+            "Turno(\n"
+            f"  {str(self.__paciente)},\n"
+            f"  {str(self.__medico)},\n"
+            f"  Fecha y hora: {self.__fecha_hora.strftime('%Y-%m-%d %H:%M:%S')},\n"
+            f"  Especialidad: {self.__especialidad}\n"
+            ")"
+        )
