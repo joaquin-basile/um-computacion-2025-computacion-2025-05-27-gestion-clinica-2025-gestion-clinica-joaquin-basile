@@ -44,7 +44,7 @@ class CLI:
                 elif opcion == "3":
                     self.agendar_turno()
                 elif opcion == "4":
-                    self.agregar_especialidad()
+                    self.agregar_especialidad_por_matricula()
                 elif opcion == "5":
                     self.emitir_receta()
                 elif opcion == "6":
@@ -201,7 +201,7 @@ class CLI:
                 
             print("\n=== TODOS LOS TURNOS ===")
             for i, turno in enumerate(turnos, 1):
-                print(f"{i}. {turno}")
+                print(f"{i}. {str(turno)}")
                 
         except Exception as e:
             print(f"Error al obtener turnos: {e}")

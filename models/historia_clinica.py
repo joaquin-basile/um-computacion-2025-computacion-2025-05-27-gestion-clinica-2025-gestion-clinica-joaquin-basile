@@ -20,9 +20,13 @@ class HistoriaClinica:
     def get_recetas(self):
         return self.__recetas
 
-    # def __str__(self):
-    #     turnos_str = "("
-    #     recetas_str = "("
-    #     for turno in self.__turnos:
-    #         turnos_str += f"\n{str(turno)}"
-    #     return f"Historia Clinica(\n {str(self.__paciente)}, \n{turnos_str}, \n{recetas_str})"
+    def __str__(self):
+        turnos_str = "\n    ".join(str(turno) for turno in self.__turnos)
+        recetas_str = "\n    ".join(str(receta) for receta in self.__recetas)
+        return (
+            "HistoriaClinica(\n"
+            f"  {str(self.__paciente)},\n"
+            f"  Turnos: [\n    {turnos_str}\n  ],\n"
+            f"  Recetas: [\n    {recetas_str}\n  ]\n"
+            ")"
+        )
