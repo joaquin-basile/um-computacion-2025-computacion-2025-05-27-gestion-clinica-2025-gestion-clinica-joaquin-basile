@@ -6,15 +6,20 @@ from datetime import datetime
 
 class TestClinica(unittest.TestCase):
     def setUp(self):
-        self.medico1 = medico.Medico("Dr. Juan Perez", "12345", [especialidad.Especialidad("Cardiología", [Dia.lunes])])
         self.clinica1 = clinica.Clinica()
+        self.medico1 = medico.Medico("Dr. Juan Perez", "12345", [especialidad.Especialidad("Cardiología", [Dia.lunes])])
         self.paciente1 = paciente.Paciente("Ana Gómez", "12345678", "01/11/2000")
+
     #Test paciente
     def test_agregar_paciente(self):
         self.clinica1.agregar_paciente(self.paciente1)
-        self.assertEqual(self.clinica1.get_pacientes(), [self.paciente1])
+        self.assertEqual(self.clinica1.get_pacientes()[0], self.paciente1)
+        # Test paciente duplicado
         with self.assertRaises(ValueError):
             self.clinica1.agregar_paciente(self.paciente1)
+        #Test paciente vacio 
+        with self.assertRaises(ValueError):
+            self.clinica1.agregar_paciente(paciente.Paciente("", "", ""))
 
     def test_validar_paciente(self):
         self.clinica1.agregar_paciente(self.paciente1)
@@ -27,8 +32,13 @@ class TestClinica(unittest.TestCase):
     def test_agregar_medico(self):
         self.clinica1.agregar_medico(self.medico1)
         self.assertEqual(self.clinica1.get_medicos(), [self.medico1])
+
+        #Test medico duplicado
         with self.assertRaises(ValueError):
             self.clinica1.agregar_medico(self.medico1)
+        #Test medico vacio
+        with self.assertRaises(ValueError):
+            self.clinica1.agregar_medico(Medico("", ""))
 
     def test_get_medico_por_matricula(self):
         self.clinica1.agregar_medico(self.medico1)
@@ -42,6 +52,25 @@ class TestClinica(unittest.TestCase):
         with self.assertRaises(MedicoNoEncontradoException):
             self.clinica1.validar_existencia_medico("")
 
+    def test_get_medicos(self):
+        self.clinica1.agregar_medico(self.medico1)
+        medicos = self.clinica1.get_medicos()
+        self.assertEqual(len(medicos), 1)
+        self.assertEqual(medicos[0].get_matricula(), self.medico1.get_matricula())
+
+    #Test especialidad
+    def test_agregar_especialidad(self):
+        self.clinica1.agregar_medico(self.medico1)
+        with self.assertRaises(ValueError) as e:
+            self.clinica1.agregar_especialidad(self.medico1, "Pediatria", ["", "MARTES", "miercoles", "miercoles", "juebebes"])
+
+        especialidades = self.medico1.get_especialidades()
+        self.assertEqual(especialidades[])
+
+        
+
+
+
     #Test receta
     def test_emitir_receta(self):
         self.clinica1.agregar_paciente(self.paciente1)
@@ -53,6 +82,7 @@ class TestClinica(unittest.TestCase):
         with self.assertRaises(RecetaInvalidaException):
             self.clinica1.emitir_receta("", "", "")
 
+    #Test turnos
     def test_agregar_turno(self):
         self.clinica1.agregar_paciente(self.paciente1)
         self.clinica1.agregar_medico(self.medico1)

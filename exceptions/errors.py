@@ -22,3 +22,14 @@ class MedicoNoEncontradoException(Exception):
     """Excepción lanzada cuando no se encuentra un médico."""
     def __init__(self, mensaje="Médico no encontrado."):
         super().__init__(mensaje)
+
+
+class DiaOcupadoException(Exception):
+    """"Excepción para indicar que un día ya está ocupado por una especialidad."""
+    def __init__(self, mensaje="El medico ya realiza una especialidad ese dia"):
+        super().__init__(mensaje)
+
+class EspecialidadExistenteException(Exception):
+    """Excepción para indicar que una especialidad ya existe en la lista de especialidades del médico."""
+    def __init__(self, mensaje="La especialidad ya existe en la lista."):
+        super().__init__(mensaje)

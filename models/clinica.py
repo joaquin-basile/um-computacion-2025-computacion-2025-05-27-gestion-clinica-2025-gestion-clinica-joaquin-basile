@@ -61,6 +61,19 @@ class Clinica:
 
         self.__historias_clinicas[dni].agregar_receta(receta)
 
+    def agregar_especialidad(self, medico: Medico, tipo_especialidad: str, dias: list[str]):
+        dias_enum = []
+        for dia_str in dias:
+            dia_enum = Dia[dia_str]
+            dias_enum.append(dia_enum)
+        
+        if dias_enum:
+            especialidad = Especialidad(tipo_especialidad, dias_enum)
+            medico.agregar_especialidad(especialidad)
+            print("Especialidad agregada exitosamente.")
+        else:
+            print("No se pudo agregar la especialidad por falta de días válidos.")
+
     # Getters 
     def get_pacientes(self) -> list[Paciente]:
         return list(self.__pacientes.values())
