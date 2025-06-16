@@ -11,15 +11,15 @@ a las que se nombro en la consigna, esto con el motivo de hacer más sencillo te
 inputs de usuario.
 
 #### Estructura
-Carpetas:
+##### Carpetas:
 - Test: Contiene todos los test de los modelos separados por archivo 
 - Models: Contiene las clases de los modelos del sistema
 - Exceptions: Contiene las excepciones personalizadas del sistema
 - Constants: Contiene las constantes del sistema que en este caso es solo un enum de los dias de la semana
 
-Archivos:
-main.py -> Entrada del programa que llama a cli
-README.md -> Documentacion del proyecto 
+##### Archivos:
+- main.py -> Entrada del programa que llama a cli
+- README.md -> Documentacion del proyecto 
 
 #### ¿Como ejecutar el programa?
 Desde la carpeta raiz del proyecto ejecutar `python main.py`
