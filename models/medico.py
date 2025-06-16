@@ -1,26 +1,19 @@
 from models.especialidad import Especialidad
 from constants.dias import Dia
+from exceptions.errors import DiaOcupadoException, EspecialidadExistenteException
 
-class DiaOcupadoException(Exception):
-    """"Excepción para indicar que un día ya está ocupado por una especialidad."""
-    def __init__(self, mensaje="La nueva especialidad no puede ser agregada porque ya existe una especialidad para ese día."):
-        super().__init__(mensaje)
-
-class EspecialidadExistenteException(Exception):
-    """Excepción para indicar que una especialidad ya existe en la lista de especialidades del médico."""
-    def __init__(self, mensaje="La especialidad ya existe en la lista."):
-        super().__init__(mensaje)
 
 class Medico:
-    def __init__(self, nombre: str, matricula: str, especialidades: list[Especialidad] = []):
+    def __init__(self, nombre: str, matricula: str, especialidades: list[Especialidad] = None):
         if nombre == "" or matricula == "":
             raise ValueError("El nombre y la matrícula del médico no pueden estar vacíos.")
         self.__nombre = nombre
         self.__matricula = matricula
-        self.__especialidades = especialidades
+        self.__especialidades = [] if especialidades is None else especialidades
+        
 
     def get_especialidades(self)-> list[Especialidad]:
-        return self.__especialidades
+        return self.__especialidades.copy()
 
     def get_matricula(self) -> str:
         return self.__matricula
@@ -31,11 +24,11 @@ class Medico:
     def agregar_especialidad(self, especialidad: Especialidad):
         for especialidad_existente in self.__especialidades:
             if especialidad.get_especialidad() == especialidad_existente.get_especialidad():
-                raise EspecialidadExistenteException()
+                raise EspecialidadExistenteException(f"El medico ya tiene la especialidad {especialidad.get_especialidad()}")
 
             for dia in especialidad.get_dias():
                 if dia in especialidad_existente.get_dias():
-                   raise DiaOcupadoException()
+                   raise DiaOcupadoException(f"El medico ya atiende otra especialidad el dia {dia.value}")
 
         self.__especialidades.append(especialidad)
 
