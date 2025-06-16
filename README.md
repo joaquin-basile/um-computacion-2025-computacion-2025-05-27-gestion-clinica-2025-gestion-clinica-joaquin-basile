@@ -1,5 +1,55 @@
 # 🏥 Sistema de Gestión para una Clínica
 
+## Informacion sobre el sistema
+### Acerca del proyecto
+En el proyecto se decidio separar la logica y test de cada clase por archivos para tener
+una estructura simple y ordenada. Fuera de la consigna se decidio cambiar el dia de atencion
+de un str a un enum por motivos de typesafe y agregar 2 excepciones más al sistema (Ver en ./exceptions/errors.py).
+
+Tambien se intento mantener lo más posible la separecion de responsabilidades teniendo asi algunas funciones extras
+a las que se nombro en la consigna, esto con el motivo de hacer más sencillo testear los casos de uso sin tener que mockear
+inputs de usuario.
+
+#### Estructura
+ .
+├──  constants
+│   └──  dias.py
+├──  exceptions
+│   └──  errors.py
+├──  main.py
+├──  models
+│   ├──  cli.py
+│   ├──  clinica.py
+│   ├──  especialidad.py
+│   ├──  historia_clinica.py
+│   ├──  medico.py
+│   ├──  paciente.py
+│   ├──  receta.py
+│   └──  turno.py
+├── 󰂺 README.md
+└──  tests
+    ├──  test_cli.py
+    ├──  test_clinica.py
+    ├──  test_especialidad.py
+    ├──  test_historia_clinica.py
+    ├──  test_medico.py
+    ├──  test_paciente.py
+    └──  test_turno.py
+
+La estructura del proyecto busca separar por carpetas las distintas partes del mismo:
+Carpetas:
+- Test: Contiene todos los test de los modelos separados por archivo 
+- Models: Contiene las clases de los modelos del sistema
+- Exceptions: Contiene las excepciones personalizadas del sistema
+- Constants: Contiene las constantes del sistema que en este caso es solo un enum de los dias de la semana
+Archivos:
+main.py -> Entrada del programa que llama a cli
+README.md -> Documentacion del proyecto 
+
+#### ¿Como ejecutar el programa?
+Desde la carpeta raiz del proyecto ejecutar `python main.py`
+#### ¿Como correr todos los test?
+Desde la carpeta raiz del proyecto ejecutar `python -m unittest discover ./tests/`
 ## 👤 Información del Alumno
 
 ### 📋 Datos Personales
