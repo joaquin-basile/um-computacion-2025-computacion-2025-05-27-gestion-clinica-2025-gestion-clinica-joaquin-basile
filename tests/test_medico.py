@@ -24,7 +24,7 @@ class TestMedico(unittest.TestCase):
         medico1 = Medico("Dr. Smith", "123456", [self.cardiologo])
         with self.assertRaises(EspecialidadExistenteException) as ex:
             medico1.agregar_especialidad(self.cardiologo)
-        self.assertEqual(str(ex.exception), "La especialidad ya existe en la lista.")
+        self.assertEqual(str(ex.exception), "El medico ya tiene la especialidad Cardiologo")
         self.assertEqual(len(medico1.get_especialidades()), 1)
 
     def test_agregar_especialidad_para_dia_existente(self):
@@ -32,7 +32,7 @@ class TestMedico(unittest.TestCase):
         neurologo = Especialidad("Neurologo", [Dia.lunes])
         with self.assertRaises(DiaOcupadoException) as ex:
             medico1.agregar_especialidad(neurologo)
-        self.assertEqual(str(ex.exception), "La nueva especialidad no puede ser agregada porque ya existe una especialidad para ese día.")
+        self.assertEqual(str(ex.exception), "El medico ya atiende otra especialidad el dia lunes")
         self.assertEqual(len(medico1.get_especialidades()), 1)
 
     def test_get_matricula(self):

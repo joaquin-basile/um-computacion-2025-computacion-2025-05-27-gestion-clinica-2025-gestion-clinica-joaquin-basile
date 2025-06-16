@@ -5,10 +5,10 @@ class Especialidad:
         self.__tipo = tipo
         self.__dias = dias
 
-    def get_especialidad(self):
+    def get_especialidad(self) -> str:
         return self.__tipo
 
-    def get_dias(self):
+    def get_dias(self) -> list[Dia]:
         return self.__dias
 
     def verificar_dia(self, dia: Dia)-> bool:

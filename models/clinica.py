@@ -1,5 +1,6 @@
 # models/clinica.py
 from datetime import datetime
+from models.especialidad import Especialidad
 from models.paciente import Paciente
 from models.medico import Medico
 from models.turno import Turno
@@ -62,17 +63,22 @@ class Clinica:
         self.__historias_clinicas[dni].agregar_receta(receta)
 
     def agregar_especialidad(self, medico: Medico, tipo_especialidad: str, dias: list[str]):
+        if not tipo_especialidad:
+            raise ValueError("Debe ingresar un nombre para la especialidad.")
+
         dias_enum = []
         for dia_str in dias:
-            dia_enum = Dia[dia_str]
-            dias_enum.append(dia_enum)
+            try:
+                dia_enum = Dia[dia_str]
+                dias_enum.append(dia_enum)
+            except KeyError:
+                raise ValueError(f"Día '{dia_str}' esta mal escrito, la especialidad no se añadira")
         
         if dias_enum:
             especialidad = Especialidad(tipo_especialidad, dias_enum)
             medico.agregar_especialidad(especialidad)
-            print("Especialidad agregada exitosamente.")
         else:
-            print("No se pudo agregar la especialidad por falta de días válidos.")
+            raise ValueError("Debe ingresar al menos un día válido para la especialidad.")
 
     # Getters 
     def get_pacientes(self) -> list[Paciente]:
